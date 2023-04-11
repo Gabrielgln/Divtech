@@ -38,10 +38,11 @@ namespace PULSE.SchedulerHelpers.Intemidia.Download
                     using (var objConnWiseSales = new SqlConnection(strConnWiseSale))
                     {
                         objConnTess.Open();
-                        objConnWiseSale.Open();
+                        objConnWiseSales.Open();
+
                         dataTableV1 = getTablePulse(RDV_INTERMIDIA_V1, objConnTess);
                         dataTableModelo = getTablePulse(RDV_INTERMIDIA_POR_MODELO, objConnTess);
-                        dataTableWiseSales = getTableWiseSales(RDV_WISESALE, objConnWiseSales),
+                        dataTableWiseSales = getTableWiseSales(RDV_WISESALE, objConnWiseSales);
 
                         CreateExcelDocument(dataTableV1);
                         CreateExcelDocument(dataTableModelo);
@@ -92,7 +93,6 @@ namespace PULSE.SchedulerHelpers.Intemidia.Download
             return dataTable;
         }
 
-        
         private void CreateExcelDocument(DataTable dataTable)
         {
             try
